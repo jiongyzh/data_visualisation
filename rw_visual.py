@@ -20,6 +20,6 @@ while True:
 
     plt.show()
 
-    # keep_running = input('Make another walk? (y/n): ')
-    # if keep_running != 'y':
-    #     break
+    keep_running = input('Make another walk? (y/n): ')
+    if keep_running != 'y':
+        break
