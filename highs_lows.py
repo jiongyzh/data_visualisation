@@ -64,8 +64,9 @@ def get_weather_pic_of_year():
     plt.xlabel('', fontsize=16)
     fig.autofmt_xdate()
     # need to set custom rotation after fig.autofmt_xdate(), or it will be overridden
-    for label in ax.xaxis.get_ticklabels():
-        label.set_rotation('vertical')
+    # for label in ax.xaxis.get_ticklabels():
+    #     label.set_rotation('vertical')
+    plt.xticks(rotation=50)
     plt.ylabel("Temperature (F)", fontsize=16)
     plt.tick_params(axis='both', which='major', labelsize=16)
     plt.show()
