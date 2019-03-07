@@ -39,20 +39,30 @@ def get_weather_pic_of_month():
 
 
 def get_weather_pic_of_year():
-    filename = 'sitka_weather_2014.csv'
+    filename = 'death_valley_2014.csv'
     with open(filename) as f:
         reader = csv.reader(f)
         header = next(reader)
         # for idx, column in enumerate(header):
         #     print(idx, column)
-        dates, highs = [], []
+        dates, highs, lows = [], [], []
         for row in reader:
-            # we cannot use strftime method here, or it will list all dates through out the whole year.
-            dates.append(datetime.strptime(row[0], "%Y-%m-%d"))
-            highs.append(int(row[1]))
+            try:
+                # we cannot use strftime method here, or it will list all dates through out the whole year.
+                current_date = datetime.strptime(row[0], "%Y-%m-%d")
+                high = int(row[1])
+                low = int(row[3])
+            except ValueError:
+                print(row[0], 'missing data')
+            else:
+                dates.append(current_date)
+                highs.append(high)
+                lows.append(low)
 
     fig = plt.figure(dpi=128, figsize=(10, 6))
-    plt.plot(dates, highs, c='red')
+    plt.plot(dates, highs, c='red', alpha=0.5)
+    plt.plot(dates, lows, c='blue', alpha=0.5)
+    plt.fill_between(dates, highs, lows, facecolor='red', alpha=0.1)
     ax = fig.add_subplot(111)
     # make sure all 12 months will be listed, by default it only lists every 2 months.
     ax.xaxis.set_major_locator(months)
@@ -60,7 +70,7 @@ def get_weather_pic_of_year():
     ax.xaxis.set_major_formatter(mon_fmt)
     # set limitation of x_axis, or it will show Jan 2015 as well
     plt.xlim(dates[0], dates[-1])
-    plt.title("Daily high temperatures, 2014", fontsize=24)
+    plt.title("Daily high and low temperatures, 2014", fontsize=24)
     plt.xlabel('', fontsize=16)
     fig.autofmt_xdate()
     # need to set custom rotation after fig.autofmt_xdate(), or it will be overridden
