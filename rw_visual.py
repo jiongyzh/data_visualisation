@@ -5,7 +5,7 @@ from random_walk import RandomWalk
 
 while True:
     # Make a random walk, and plot the points.
-    rw = RandomWalk(100000)
+    rw = RandomWalk(50000)
     rw.fill_walk()
     point_numbers = list(range(rw.num_points))
 
@@ -20,6 +20,6 @@ while True:
 
     plt.show()
 
-    keep_running = input('Make another walk? (y/n): ')
-    if keep_running != 'y':
-        break
+    # keep_running = input('Make another walk? (y/n): ')
+    # if keep_running != 'y':
+    #     break
