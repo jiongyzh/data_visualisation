@@ -1,12 +1,11 @@
 import json
 import pygal
 from pygal.style import RotateStyle as RS, LightColorizedStyle as LCS
-# from pygal.style import LightColorizedStyle
 
 from country_codes import get_country_code
 
 
-file_name = 'population_data.json'
+file_name = 'input_files/population_data.json'
 with open(file_name) as f:
     cc_pops_1, cc_pops_2, cc_pops_3 = {}, {}, {}
     for pop_dict in json.load(f):
@@ -30,7 +29,7 @@ with open(file_name) as f:
     wm.add('0-10m', cc_pops_1)
     wm.add('10m-1bn', cc_pops_2)
     wm.add('>1bn', cc_pops_3)
-    wm.render_to_file('world_population.svg')
+    wm.render_to_file('output_files/world_population.svg')
 
 
 def place_value(number):

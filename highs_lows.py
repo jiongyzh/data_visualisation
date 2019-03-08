@@ -1,7 +1,6 @@
 import csv
 from matplotlib import pyplot as plt
 from matplotlib import dates as mdates
-import matplotlib.ticker as mticker
 import numpy as np
 from datetime import datetime
 
@@ -9,7 +8,7 @@ months = mdates.MonthLocator()
 mon_fmt = mdates.DateFormatter('%b %Y')
 
 def get_weather_pic_of_month():
-    filename = 'sitka_weather_07-2014.csv'
+    filename = 'input_files/sitka_weather_07-2014.csv'
     with open(filename) as f:
         reader = csv.reader(f)
         header = next(reader)
@@ -39,7 +38,7 @@ def get_weather_pic_of_month():
 
 
 def get_weather_pic_of_year():
-    filename = 'death_valley_2014.csv'
+    filename = 'input_files/death_valley_2014.csv'
     with open(filename) as f:
         reader = csv.reader(f)
         header = next(reader)

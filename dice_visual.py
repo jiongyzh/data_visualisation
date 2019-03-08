@@ -22,4 +22,4 @@ hist.x_labels = list(str(i) for i in range(2, max_result+1))
 hist.x_title = 'Result'
 hist.y_title = 'Frequency of Result'
 hist.add('D6 + D10', frequencies)
-hist.render_to_file('die_visual.svg')
+hist.render_to_file('output_files/dice_visual.svg')
