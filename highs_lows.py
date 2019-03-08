@@ -20,22 +20,22 @@ def get_weather_pic_of_month():
             dates.append(datetime.strptime(row[0], "%Y-%m-%d").strftime("%B %d %Y"))
             highs.append(int(row[1]))
 
-    fig = plt.figure(dpi=200, figsize=(5, 3))
-    plt.plot(dates, highs, c='red')
-    ax = fig.add_subplot(111)
-    # print(plt.xticks([]))
-    # only show 3th x_ticks
-    ax.set_xticks(ax.get_xticks()[::3])
-    # set frequency for y axis
-    plt.yticks(np.arange(round(min(highs))-1, round(max(highs))+2, 2))
-    # set limits of axis
-    plt.axis([0, 31, round(min(highs))-1, round(max(highs))+1])
-    plt.title("Daily high temperatures, July 2014", fontsize=20)
-    plt.xlabel('', fontsize=12)
-    fig.autofmt_xdate()
-    plt.ylabel("Temperature (F)", fontsize=16)
-    plt.tick_params(axis='both', which='major', labelsize=12)
-    plt.show()
+        fig = plt.figure(dpi=200, figsize=(5, 3))
+        plt.plot(dates, highs, c='red')
+        ax = fig.add_subplot(111)
+        # print(plt.xticks([]))
+        # only show 3th x_ticks
+        ax.set_xticks(ax.get_xticks()[::3])
+        # set frequency for y axis
+        plt.yticks(np.arange(round(min(highs))-1, round(max(highs))+2, 2))
+        # set limits of axis
+        plt.axis([0, 31, round(min(highs))-1, round(max(highs))+1])
+        plt.title("Daily high temperatures, July 2014", fontsize=20)
+        plt.xlabel('', fontsize=12)
+        fig.autofmt_xdate()
+        plt.ylabel("Temperature (F)", fontsize=16)
+        plt.tick_params(axis='both', which='major', labelsize=12)
+        plt.show()
 
 
 def get_weather_pic_of_year():
